@@ -1,7 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"monkey/lexer"
+	"monkey/token"
+)
 
 func main() {
-	fmt.Println("Hello World")
+	input := "=+(){},;"
+
+	l := lexer.New(input)
+
+	for {
+		tok := l.NextToken()
+		fmt.Printf("%+v\n", tok)
+
+		if tok.Type == token.EOF {
+			break
+		}
+	}
 }
